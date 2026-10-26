@@ -1,0 +1,300 @@
+/* =========================================================
+   1. LAYOUT UTAMA
+   ========================================================= */
+
+#webgis-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    margin: 30px auto;
+}
+
+.webgis-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    width: 100%;
+}
+
+
+/* =========================================================
+   2. PANEL KONTROL
+   ========================================================= */
+
+#control-panel {
+    width: 120px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+#control-panel h3 {
+    text-align: center;
+    margin: 0 0 12px;
+    font-weight: bold;
+}
+
+/* =========================================================
+   3. PETA LEAFLET
+   ========================================================= */
+
+#map {
+    flex: 1 1 0;
+    min-width: 0;
+    width: 100%;
+    height: 500px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================================
+   4. SLIDER DATASET D / E / N / DEN
+   ========================================================= */
+
+#dataset-control {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto 12px;
+    box-sizing: border-box;
+}
+
+#dataset-slider {
+    width: 100%;
+    cursor: pointer;
+    accent-color: #7B3F8C;
+}
+
+#dataset-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    font-size: 14px;
+    color: #000000;
+}
+
+#dataset-labels span {
+    text-align: center;
+}
+
+/* =========================================================
+   5. LEGENDA KEBISINGAN
+   Struktur HTML dibuat oleh createStaticIsoClassControl()
+   di webgis.js.
+   ========================================================= */
+
+#isoclass-control {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.noise-legend {
+    display: grid;
+    grid-template-columns: auto 48px;
+    column-gap: 10px;
+    align-items: stretch;
+    justify-content: center;
+    width: max-content;
+    max-width: 100%;
+    padding: 8px 0;
+    box-sizing: border-box;
+}
+
+.noise-label-column,
+.noise-color-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Setiap label dan kotak warna memiliki tinggi yang sama. */
+.noise-legend-item,
+.noise-color-swatch {
+    height: 48px;
+    flex: 0 0 48px;
+    box-sizing: border-box;
+}
+
+.noise-legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    white-space: nowrap;
+    font-size: 15px;
+    color: #000000;
+}
+
+.noise-color-swatch {
+    width: 48px;
+    border-radius: 8px;
+}
+
+/* =========================================================
+   6. SLIDER AMBANG KEBISINGAN
+   Track statis; warna thumb mengikuti kelas terpilih.
+   ========================================================= */
+
+.noise-slider-column {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: 30px;
+    padding: 0;
+    margin: 0;
+}
+
+.noise-class-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    writing-mode: vertical-lr;
+    direction: rtl;
+
+    display: block;
+    width: 30px;
+    height: 272px; /* 5 x 48px + 4 x 8px */
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline-offset: 4px;
+    background: transparent;
+    cursor: pointer;
+    touch-action: pan-x;
+}
+
+/* Track statis untuk browser berbasis WebKit/Blink. */
+.noise-class-slider::-webkit-slider-runnable-track {
+    width: 6px;
+    background: #D5C5DD;
+    border: 0;
+    border-radius: 999px;
+}
+
+/* Track statis untuk Firefox. */
+.noise-class-slider::-moz-range-track {
+    width: 6px;
+    background: #D5C5DD;
+    border: 0;
+    border-radius: 999px;
+}
+
+/* Lingkaran slider dinamis untuk browser WebKit/Blink. */
+.noise-class-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    margin-left: -9px;
+    border: 3px solid #FFFFFF;
+    border-radius: 50%;
+    background: var(--thumb-color, #4F1D63);
+    box-shadow:
+        0 2px 6px rgba(48, 20, 60, 0.25),
+        0 0 0 2px rgba(79, 29, 99, 0.12);
+}
+
+/* Lingkaran slider dinamis untuk Firefox. */
+.noise-class-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border: 3px solid #FFFFFF;
+    border-radius: 50%;
+    background: var(--thumb-color, #4F1D63);
+    box-shadow:
+        0 2px 6px rgba(48, 20, 60, 0.25),
+        0 0 0 2px rgba(79, 29, 99, 0.12);
+}
+
+
+/* Slider penyaring kelas legenda disembunyikan; legenda tetap menampilkan semua kelas. */
+.noise-slider-column {
+    display: none !important;
+}
+
+/* =========================================================
+   7. POPUP NOISE MAP
+   ========================================================= */
+
+.noise-popup {
+    font-size: 14px;
+}
+
+.popup-row {
+    display: grid;
+    grid-template-columns: 85px 10px auto;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+}
+
+.popup-row b {
+    font-weight: 700;
+}
+
+/* =========================================================
+   8. KONTROL BASEMAP LEAFLET
+   Tidak mengubah mekanisme klik bawaan Leaflet.
+   ========================================================= */
+
+.leaflet-control-layers {
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.leaflet-control-layers-toggle {
+    width: 36px !important;
+    height: 36px !important;
+}
+
+.leaflet-control-layers-expanded {
+    min-width: 165px;
+    padding: 10px 12px !important;
+    background: #FFFFFF;
+}
+
+.leaflet-control-layers-list label {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start !important;
+    gap: 8px;
+    margin: 1px 0;
+    text-align: left !important;
+    cursor: pointer;
+}
+
+.leaflet-control-layers-list label span {
+    text-align: left !important;
+}
+
+.leaflet-control-layers-selector {
+    flex-shrink: 0;
+    margin: 1px 0 !important;
+}
+
+/* =========================================================
+   9. RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+    #map {
+        height: 300px;
+    }
+
+    #webgis-wrapper {
+        gap: 14px;
+        margin: 20px auto;
+    }
+
+    .webgis-layout {
+        gap: 12px;
+    }
+
+    #control-panel {
+        width: 230px;
+        flex-basis: 230px;
+    }
+}
